@@ -59,6 +59,7 @@ textarea{resize:vertical;min-height:100px}
 #custom-note{display:none;margin-top:12px}
 .help-link{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:8px 14px;background:#f0fdf4;border:1.5px solid #86efac;border-radius:8px;color:#16a34a;font-size:13px;font-weight:500;text-decoration:none;transition:all .15s}
 .help-link:hover{background:#dcfce7;border-color:#4ade80}
+.section-footer{margin-top:20px;padding-top:20px;border-top:1px solid var(--gray-200)}
 .checkbox-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .cb-item input[type="checkbox"]{display:none}
 .cb-item label{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1.5px solid var(--gray-200);border-radius:8px;cursor:pointer;transition:all .15s;background:var(--gray-100);font-size:13px;font-weight:500;color:var(--gray-700)}
@@ -168,6 +169,9 @@ textarea{resize:vertical;min-height:100px}
 <label for="r-d2s"><span class="radio-dot"></span>Drive-to-store</label>
 </div>
 </div>
+</div>
+<div class="section-footer">
+<a href="https://support.happydemics.com/launch/before-the-set-up/kpi-question-list-per-template" target="_blank" class="help-link">📚 Nejste si jisti typem studie? Podivejte se na napovedu</a>
 </div>
 </div>
 
@@ -313,7 +317,7 @@ textarea{resize:vertical;min-height:100px}
 </div>
 
 <script>
-var PW_HASH='4c8e6d281ba6e9bc9ad82499db8d2522db58c7c1749bdd5de9a93f975e8287c2';
+var PW_HASH='661f6b92527a438ec76cd45aebdfaf04e1c2e4c8665a648f366c395ff1e8006a';
 if(sessionStorage.getItem('bl_auth')==='ok')showApp();
 async function unlock(){
 var val=document.getElementById('pw').value.trim();
