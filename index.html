@@ -5,13 +5,7 @@
 <title>Brand Lift Brief</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
---purple:#6366f1;--purple-dark:#4f46e5;--purple-light:#ede9fe;
---red:#ef4444;--dark:#0f1117;--dark2:#1a1d2e;--border:#2d3348;
---text-muted:#94a3b8;--bg:#f1f5f9;--white:#ffffff;
---gray-100:#f8fafc;--gray-200:#e2e8f0;--gray-600:#475569;
---gray-700:#334155;--gray-900:#0f172a;
-}
+:root{--purple:#6366f1;--purple-dark:#4f46e5;--purple-light:#ede9fe;--red:#ef4444;--dark:#0f1117;--dark2:#1a1d2e;--border:#2d3348;--text-muted:#94a3b8;--bg:#f1f5f9;--white:#ffffff;--gray-100:#f8fafc;--gray-200:#e2e8f0;--gray-600:#475569;--gray-700:#334155;--gray-900:#0f172a}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--dark);min-height:100vh}
 #lock{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .lock-card{text-align:center;padding:48px 40px;max-width:440px;width:100%;background:var(--dark2);border-radius:20px;border:1px solid var(--border);box-shadow:0 24px 64px rgba(0,0,0,0.4)}
@@ -45,11 +39,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .field-group{margin-bottom:24px}
 .field-group:last-child{margin-bottom:0}
 label.field-label{display:block;font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:8px}
+.field-hint{font-size:12px;color:var(--text-muted);font-weight:400;margin-left:6px}
 .required{color:var(--red);margin-left:3px}
 input[type="text"],input[type="email"],input[type="number"],input[type="url"],input[type="date"],textarea{width:100%;padding:12px 16px;border:1.5px solid var(--gray-200);border-radius:10px;font-size:15px;color:var(--gray-900);background:var(--gray-100);outline:none;font-family:inherit;transition:border-color .2s,box-shadow .2s}
 input:focus,textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(99,102,241,0.1);background:white}
 textarea{resize:vertical;min-height:100px}
 .row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.konkurenti-group{display:flex;flex-direction:column;gap:8px}
 .phase-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin:20px 0 8px}
 .phase-label:first-of-type{margin-top:0}
 .radio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
@@ -61,6 +57,8 @@ textarea{resize:vertical;min-height:100px}
 .radio-dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--gray-200);flex-shrink:0;transition:all .15s}
 .radio-card input:checked+label .radio-dot{border-color:var(--purple);background:var(--purple);box-shadow:inset 0 0 0 3px white}
 #custom-note{display:none;margin-top:12px}
+.help-link{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:8px 14px;background:#f0fdf4;border:1.5px solid #86efac;border-radius:8px;color:#16a34a;font-size:13px;font-weight:500;text-decoration:none;transition:all .15s}
+.help-link:hover{background:#dcfce7;border-color:#4ade80}
 .checkbox-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .cb-item input[type="checkbox"]{display:none}
 .cb-item label{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1.5px solid var(--gray-200);border-radius:8px;cursor:pointer;transition:all .15s;background:var(--gray-100);font-size:13px;font-weight:500;color:var(--gray-700)}
@@ -68,7 +66,7 @@ textarea{resize:vertical;min-height:100px}
 .cb-item input:checked+label{border-color:var(--purple);background:var(--purple-light);color:var(--purple-dark)}
 .cb-box{width:16px;height:16px;border-radius:4px;border:2px solid var(--gray-200);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .15s}
 .cb-item input:checked+label .cb-box{background:var(--purple);border-color:var(--purple);color:white}
-.cb-item input:checked+label .cb-box::after{content:'✓'}
+.cb-item input:checked+label .cb-box::after{content:'checkmark'}
 .submit-wrap{display:flex;justify-content:center;margin-top:32px}
 .btn-submit{padding:16px 56px;background:var(--purple);color:white;border:none;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer;letter-spacing:.3px;box-shadow:0 4px 16px rgba(99,102,241,0.3);transition:background .2s,transform .1s,box-shadow .2s}
 .btn-submit:hover{background:var(--purple-dark);box-shadow:0 6px 24px rgba(99,102,241,0.4)}
@@ -79,15 +77,7 @@ textarea{resize:vertical;min-height:100px}
 .success-icon{font-size:64px;margin-bottom:24px}
 .success-card h2{font-size:28px;font-weight:700;color:var(--gray-900);margin-bottom:12px}
 .success-card p{color:var(--gray-600);line-height:1.7;font-size:15px}
-@media(max-width:600px){
-.form-card{padding:24px 18px}
-.radio-grid{grid-template-columns:1fr}
-.checkbox-grid{grid-template-columns:repeat(2,1fr)}
-.row-2{grid-template-columns:1fr}
-.top-bar{padding:12px 16px}
-.top-bar-title{font-size:14px}
-.btn-submit{width:100%}
-}
+@media(max-width:600px){.form-card{padding:24px 18px}.radio-grid{grid-template-columns:1fr}.checkbox-grid{grid-template-columns:repeat(2,1fr)}.row-2{grid-template-columns:1fr}.top-bar{padding:12px 16px}.top-bar-title{font-size:14px}.btn-submit{width:100%}}
 </style>
 </head>
 <body>
@@ -96,26 +86,25 @@ textarea{resize:vertical;min-height:100px}
 <div class="lock-card">
 <div class="lock-icon">🔐</div>
 <h1>Brand Lift Brief</h1>
-<p class="subtitle">Tato stránka je chráněna heslem.<br>Heslo získáte od vašeho AdOps specialisty.</p>
+<p class="subtitle">Tato stranka je chranena heslem.<br>Heslo ziskate od vasho AdOps specialisty.</p>
 <div class="input-wrap">
-<input type="password" id="pw" placeholder="Zadejte přístupové heslo…" autocomplete="current-password">
+<input type="password" id="pw" placeholder="Zadejte pristupove heslo...">
 <button class="eye-btn" onclick="toggleEye()" type="button">👁</button>
 </div>
-<div class="error-msg" id="err">❌ Nesprávné heslo. Zkuste to znovu.</div>
-<button class="btn-primary" onclick="unlock()" type="button">Vstoupit →</button>
-<p class="lock-hint">Problém s přihlášením? Kontaktujte vašeho AdOps specialistu.</p>
+<div class="error-msg" id="err">Nespravne heslo. Zkuste to znovu.</div>
+<button class="btn-primary" onclick="unlock()" type="button">Vstoupit</button>
+<p class="lock-hint">Problem s prihlasenim? Kontaktujte vaseho AdOps specialistu.</p>
 </div>
 </div>
 
 <div id="app">
 <div class="top-bar">
 <div class="top-bar-left">
-<span class="top-bar-title">📋 Brand Lift Study – Setup Brief</span>
+<span class="top-bar-title">Brand Lift Study - Setup Brief</span>
 <span class="badge badge-purple">2026</span>
 </div>
-<span class="badge badge-red">🔒 Důvěrné</span>
+<span class="badge badge-red">Duvernе</span>
 </div>
-
 <div class="form-container">
 <form id="brief-form" action="https://formspree.io/f/xwvzpdyr" method="POST">
 
@@ -127,55 +116,56 @@ textarea{resize:vertical;min-height:100px}
 </div>
 <div class="field-group">
 <label class="field-label">Vyberte typ studie <span class="required">*</span></label>
-<p class="phase-label">— Vlastní —</p>
+<p class="phase-label">Vlastni</p>
 <div class="radio-grid single">
 <div class="radio-card">
 <input type="radio" name="typ_studie" id="r-custom" value="Custom" onchange="toggleCustom(this)">
-<label for="r-custom"><span class="radio-dot"></span> Custom</label>
+<label for="r-custom"><span class="radio-dot"></span>Custom</label>
 </div>
 </div>
 <div id="custom-note">
-<textarea name="custom_popis" placeholder="Popište prosím detailně co má studie měřit…"></textarea>
+<a href="https://support.happydemics.com/launch/before-the-set-up/kpi-question-list-per-template" target="_blank" class="help-link">📚 Napoveda ke KPI otazkam dle sablony</a>
+<textarea name="custom_popis" placeholder="Popiste prosim detailne co ma studie merit..." style="margin-top:10px"></textarea>
 </div>
-<p class="phase-label">— Awareness fáze —</p>
+<p class="phase-label">Awareness faze</p>
 <div class="radio-grid">
 <div class="radio-card">
 <input type="radio" name="typ_studie" id="r-funnel" value="Funnel overview" onchange="toggleCustom(this)">
-<label for="r-funnel"><span class="radio-dot"></span> Funnel overview</label>
+<label for="r-funnel"><span class="radio-dot"></span>Funnel overview</label>
 </div>
 <div class="radio-card">
 <input type="radio" name="typ_studie" id="r-creative" value="Creative effectiveness" onchange="toggleCustom(this)">
-<label for="r-creative"><span class="radio-dot"></span> Creative effectiveness</label>
+<label for="r-creative"><span class="radio-dot"></span>Creative effectiveness</label>
 </div>
 <div class="radio-card">
 <input type="radio" name="typ_studie" id="r-visibility" value="Brand visibility" onchange="toggleCustom(this)">
-<label for="r-visibility"><span class="radio-dot"></span> Brand visibility</label>
+<label for="r-visibility"><span class="radio-dot"></span>Brand visibility</label>
 </div>
 <div class="radio-card">
 <input type="radio" name="typ_studie" id="r-perception" value="Brand perception" onchange="toggleCustom(this)">
-<label for="r-perception"><span class="radio-dot"></span> Brand perception</label>
+<label for="r-perception"><span class="radio-dot"></span>Brand perception</label>
 </div>
 </div>
-<p class="phase-label">— Consideration fáze —</p>
+<p class="phase-label">Consideration faze</p>
 <div class="radio-grid">
 <div class="radio-card">
 <input type="radio" name="typ_studie" id="r-message" value="Message relevance" onchange="toggleCustom(this)">
-<label for="r-message"><span class="radio-dot"></span> Message relevance</label>
+<label for="r-message"><span class="radio-dot"></span>Message relevance</label>
 </div>
 <div class="radio-card">
 <input type="radio" name="typ_studie" id="r-attention" value="Audience attention" onchange="toggleCustom(this)">
-<label for="r-attention"><span class="radio-dot"></span> Audience attention</label>
+<label for="r-attention"><span class="radio-dot"></span>Audience attention</label>
 </div>
 </div>
-<p class="phase-label">— Conversion fáze —</p>
+<p class="phase-label">Conversion faze</p>
 <div class="radio-grid">
 <div class="radio-card">
 <input type="radio" name="typ_studie" id="r-sales" value="Sales generation" onchange="toggleCustom(this)">
-<label for="r-sales"><span class="radio-dot"></span> Sales generation</label>
+<label for="r-sales"><span class="radio-dot"></span>Sales generation</label>
 </div>
 <div class="radio-card">
 <input type="radio" name="typ_studie" id="r-d2s" value="Drive-to-store" onchange="toggleCustom(this)">
-<label for="r-d2s"><span class="radio-dot"></span> Drive-to-store</label>
+<label for="r-d2s"><span class="radio-dot"></span>Drive-to-store</label>
 </div>
 </div>
 </div>
@@ -184,41 +174,48 @@ textarea{resize:vertical;min-height:100px}
 <div class="form-card">
 <div class="section-header">
 <div class="section-num">2</div>
-<span class="section-icon">📌</span>
-<span class="section-title">Základní informace</span>
+<span class="section-title">Zakladni informace</span>
 </div>
 <div class="field-group">
-<label class="field-label" for="brand">Brand / produkt název <span class="required">*</span></label>
-<input type="text" id="brand" name="brand_nazev" placeholder="např. Coca-Cola, Nike Air Max…" required="">
+<label class="field-label" for="brand">Brand / produkt nazev <span class="required">*</span></label>
+<input type="text" id="brand" name="brand_nazev" placeholder="napr. Coca-Cola..." required="">
 </div>
 <div class="row-2">
 <div class="field-group">
-<label class="field-label" for="timing-od">Timing – spuštění <span class="required">*</span></label>
+<label class="field-label" for="timing-od">Timing - spusteni <span class="required">*</span></label>
 <input type="date" id="timing-od" name="timing_od" required="">
 </div>
 <div class="field-group">
-<label class="field-label" for="timing-do">Timing – ukončení <span class="required">*</span></label>
+<label class="field-label" for="timing-do">Timing - ukonceni <span class="required">*</span></label>
 <input type="date" id="timing-do" name="timing_do" required="">
 </div>
 </div>
 <div class="row-2">
 <div class="field-group">
 <label class="field-label" for="reach">Odhad reach <span class="required">*</span></label>
-<input type="number" id="reach" name="reach" placeholder="např. 500000" min="0" required="">
+<input type="number" id="reach" name="reach" placeholder="napr. 500000" min="0" required="">
 </div>
 <div class="field-group">
-<label class="field-label" for="budget">Budget kampaně (EUR) <span class="required">*</span></label>
-<input type="number" id="budget" name="budget_eur" placeholder="např. 25000" min="0" required="">
+<label class="field-label" for="budget">Budget kampane (EUR) <span class="required">*</span></label>
+<input type="number" id="budget" name="budget_eur" placeholder="napr. 25000" min="0" required="">
 </div>
 </div>
 <div class="row-2">
 <div class="field-group">
 <label class="field-label" for="platforma">Platforma <span class="required">*</span></label>
-<input type="text" id="platforma" name="platforma" placeholder="např. DV360, Meta Ads…" required="">
+<input type="text" id="platforma" name="platforma" placeholder="napr. DV360, Meta Ads..." required="">
 </div>
 <div class="field-group">
-<label class="field-label" for="format">Formát kreativy <span class="required">*</span></label>
-<input type="text" id="format" name="format_kreativy" placeholder="např. Banner 300x250, Video 15s…" required="">
+<label class="field-label" for="format">Format kreativy <span class="required">*</span></label>
+<input type="text" id="format" name="format_kreativy" placeholder="napr. Banner 300x250, Video 15s..." required="">
+</div>
+</div>
+<div class="field-group">
+<label class="field-label">Konkurenti <span class="required">*</span><span class="field-hint">(vyplnte vsechny 3)</span></label>
+<div class="konkurenti-group">
+<input type="text" name="konkurent_1" placeholder="Konkurent 1" required="">
+<input type="text" name="konkurent_2" placeholder="Konkurent 2" required="">
+<input type="text" name="konkurent_3" placeholder="Konkurent 3" required="">
 </div>
 </div>
 </div>
@@ -226,11 +223,10 @@ textarea{resize:vertical;min-height:100px}
 <div class="form-card">
 <div class="section-header">
 <div class="section-num">3</div>
-<span class="section-icon">📡</span>
-<span class="section-title">Doměřovaný kanál</span>
+<span class="section-title">Domerovany kanal</span>
 </div>
 <div class="field-group">
-<label class="field-label">Vyberte kanály <span class="required">*</span></label>
+<label class="field-label">Vyberte kanaly <span class="required">*</span></label>
 <div class="checkbox-grid">
 <div class="cb-item"><input type="checkbox" id="k-display" name="kanal" value="Display"><label for="k-display"><span class="cb-box"></span>Display</label></div>
 <div class="cb-item"><input type="checkbox" id="k-video" name="kanal" value="Online video"><label for="k-video"><span class="cb-box"></span>Online video</label></div>
@@ -252,13 +248,12 @@ textarea{resize:vertical;min-height:100px}
 <div class="form-card">
 <div class="section-header">
 <div class="section-num">4</div>
-<span class="section-icon">🎯</span>
 <span class="section-title">Targeting strategie</span>
 </div>
 <div class="field-group">
 <label class="field-label">Vyberte targeting <span class="required">*</span></label>
 <div class="checkbox-grid">
-<div class="cb-item"><input type="checkbox" id="t-beh" name="targeting" value="Behaviorální"><label for="t-beh"><span class="cb-box"></span>Behaviorální</label></div>
+<div class="cb-item"><input type="checkbox" id="t-beh" name="targeting" value="Behavioralni"><label for="t-beh"><span class="cb-box"></span>Behavioralni</label></div>
 <div class="cb-item"><input type="checkbox" id="t-geo" name="targeting" value="Geo"><label for="t-geo"><span class="cb-box"></span>Geo</label></div>
 <div class="cb-item"><input type="checkbox" id="t-retail" name="targeting" value="Retail"><label for="t-retail"><span class="cb-box"></span>Retail</label></div>
 <div class="cb-item"><input type="checkbox" id="t-demo" name="targeting" value="Demografie"><label for="t-demo"><span class="cb-box"></span>Demografie</label></div>
@@ -270,45 +265,39 @@ textarea{resize:vertical;min-height:100px}
 <div class="form-card">
 <div class="section-header">
 <div class="section-num">5</div>
-<span class="section-icon">🎨</span>
-<span class="section-title">Kreativa &amp; Konkurence</span>
+<span class="section-title">Kreativa</span>
 </div>
 <div class="field-group">
-<label class="field-label" for="kreativa-link">Link na kreativu <span style="font-weight:400;color:var(--text-muted)">(WeTransfer, Google Drive, Dropbox…)</span></label>
-<input type="url" id="kreativa-link" name="link_kreativy" placeholder="https://…">
-</div>
-<div class="field-group">
-<label class="field-label" for="konkurenti">Konkurenti <span style="font-weight:400;color:var(--text-muted)">(oddělte čárkou)</span></label>
-<input type="text" id="konkurenti" name="konkurenti" placeholder="např. Pepsi, Fanta, Sprite…">
+<label class="field-label" for="kreativa-link">Link na kreativu (WeTransfer, Google Drive, Dropbox...)</label>
+<input type="url" id="kreativa-link" name="link_kreativy" placeholder="https://...">
 </div>
 </div>
 
 <div class="form-card">
 <div class="section-header">
 <div class="section-num">6</div>
-<span class="section-icon">💬</span>
-<span class="section-title">Kontakt &amp; Poznámky</span>
+<span class="section-title">Kontakt a Poznamky</span>
 </div>
 <div class="row-2">
 <div class="field-group">
-<label class="field-label" for="jmeno">Vaše jméno <span class="required">*</span></label>
-<input type="text" id="jmeno" name="kontakt_jmeno" placeholder="Jan Novák" required="">
+<label class="field-label" for="jmeno">Vase jmeno <span class="required">*</span></label>
+<input type="text" id="jmeno" name="kontakt_jmeno" placeholder="Jan Novak" required="">
 </div>
 <div class="field-group">
-<label class="field-label" for="email">Váš email <span class="required">*</span></label>
+<label class="field-label" for="email">Vas email <span class="required">*</span></label>
 <input type="email" id="email" name="_replyto" placeholder="jan@firma.cz" required="">
 </div>
 </div>
 <div class="field-group">
-<label class="field-label" for="poznamky">Poznámky / specifické požadavky</label>
-<textarea id="poznamky" name="poznamky" placeholder="Jakékoliv další informace nebo požadavky…"></textarea>
+<label class="field-label" for="poznamky">Poznamky / specificke pozadavky</label>
+<textarea id="poznamky" name="poznamky" placeholder="Jakekoliv dalsi informace..."></textarea>
 </div>
 <input type="hidden" name="_subject" value="Novy Brand Lift Brief">
 <input type="text" name="_gotcha" style="display:none">
 </div>
 
 <div class="submit-wrap">
-<button type="submit" class="btn-submit" id="submit-btn">Odeslat brief →</button>
+<button type="submit" class="btn-submit" id="submit-btn">Odeslat brief</button>
 </div>
 
 </form>
@@ -318,13 +307,13 @@ textarea{resize:vertical;min-height:100px}
 <div id="success">
 <div class="success-card">
 <div class="success-icon">🎉</div>
-<h2>Brief odeslán!</h2>
-<p>Děkujeme za vyplnění.<br>Váš AdOps specialista se vám ozve<br>do 24 hodin s potvrzením.</p>
+<h2>Brief odeslan!</h2>
+<p>Dekujeme za vyplneni.<br>Vas AdOps specialista se vam ozve<br>do 24 hodin s potvrzenim.</p>
 </div>
 </div>
 
 <script>
-const PW_HASH='661f6b92527a438ec76cd45aebdfaf04e1c2e4c8665a648f366c395ff1e8006a';
+var PW_HASH='661f6b92527a438ec76cd45aebdfaf04e1c2e4c8665a648f366c395ff1e8006a';
 if(sessionStorage.getItem('bl_auth')==='ok')showApp();
 async function unlock(){
 var val=document.getElementById('pw').value.trim();
@@ -340,26 +329,42 @@ document.getElementById('lock').style.display='none';
 document.getElementById('app').style.display='flex';
 document.body.style.background='#f1f5f9';
 }
-function shake(el){el.classList.add('shake');setTimeout(function(){el.classList.remove('shake')},400);}
+function shake(el){el.classList.add('shake');setTimeout(function(){el.classList.remove('shake');},400);}
 async function sha256(str){
 var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
-return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
 }
-function toggleEye(){var i=document.getElementById('pw');i.type=i.type==='password'?'text':'password';}
-function toggleCustom(radio){document.getElementById('custom-note').style.display=radio.value==='Custom'?'block':'none';}
-document.getElementById('pw').addEventListener('keydown',function(e){if(e.key==='Enter')unlock();});
+function toggleEye(){
+var i=document.getElementById('pw');
+i.type=i.type==='password'?'text':'password';
+}
+function toggleCustom(radio){
+document.getElementById('custom-note').style.display=radio.value==='Custom'?'block':'none';
+}
+document.getElementById('pw').addEventListener('keydown',function(e){
+if(e.key==='Enter')unlock();
+});
 document.getElementById('brief-form').addEventListener('submit',async function(e){
 e.preventDefault();
 var btn=document.getElementById('submit-btn');
-btn.disabled=true;btn.textContent='Odesilam...';
+btn.disabled=true;
+btn.textContent='Odesilam...';
 try{
 var res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
 if(res.ok){
 document.getElementById('app').style.display='none';
 document.getElementById('success').style.display='flex';
 document.body.style.background='#f1f5f9';
-}else{alert('Nastala chyba. Zkuste znovu.');btn.disabled=false;btn.textContent='Odeslat brief →';}
-}catch(err){alert('Chyba pripojeni. Zkuste znovu.');btn.disabled=false;btn.textContent='Odeslat brief →';}
+}else{
+alert('Nastala chyba. Zkuste znovu.');
+btn.disabled=false;
+btn.textContent='Odeslat brief';
+}
+}catch(e){
+alert('Chyba pripojeni. Zkuste znovu.');
+btn.disabled=false;
+btn.textContent='Odeslat brief';
+}
 });
 </script>
 
